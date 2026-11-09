@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react"
 
-
-export default function useFetchData(url) { // dette skal ikke være en async function, kun på selve fetchdata functionen inde i useeffecten.
-
-    const [fetchedData, setFetchedData] = useState(false)
+export default function useFetchData(url) {
+    const [fetchedData, setFetchedData] = useState(null)
 
     useEffect(() => {
+        if (!url) { // hvis vi har ingen url så set fetcheddata til at være null og return (vi vil ikke fetch ingenting)
+            setFetchedData(null)
+            return
+        }
+
         async function fetchData() {
-            let response = await fetch(url)
-            let data = await response.json()
+            const response = await fetch(url)
+            const data = await response.json()
+
             setFetchedData(data)
         }
+
         fetchData()
     }, [url])
 
-    return fetchedData ? (fetchedData) : ("")
+    return fetchedData
 }
