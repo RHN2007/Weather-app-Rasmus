@@ -1,7 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "./components/Header/Header"
 import SearchSection from "./components/SearchSection/SearchSection"
-import useWeather from "./Hooks/UseWeather"
 import useFetchData from "./Hooks/useFetchData"
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
   const apiKey = import.meta.env.VITE_API_KEY
 
   let geoURL = ""
+  let weatherURL = ""
 
   if (city) {
     const url = new URL(baseGeocodingURL)
@@ -20,12 +20,33 @@ function App() {
     url.searchParams.set("q", city)
     url.searchParams.set("appid", apiKey)
 
-    geoURL = url.toString()
+    geoURL = url
   }
 
   const geoData = useFetchData(geoURL)
-  console.log(geoData)
 
+  if (geoData) {
+    const lat = geoData[0].lat
+    const lon = geoData[0].lon
+    
+    const url = new URL(baseWeatherURL)
+
+    url.searchParams.set("lat", lat)
+    url.searchParams.set("lon", lon)
+    url.searchParams.set("units", "metric")
+    url.searchParams.set("appid", apiKey)
+
+    weatherURL = url
+  }
+
+  const weatherData = useFetchData(weatherURL)
+
+  useEffect(() => {
+    if (weatherData) {
+      setWeather(weatherData)
+    }
+    console.log(weatherData)
+  }, [weatherData])
 
   return (
     <>
