@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+#root {
+    max-width: 1100px;
+    margin-inline: auto;
+}
+
+:root {
+    --main-text-color: rgb(67, 170, 214);
+}
+
+.font {
+    font-family: "Inter", sans-serif;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "./components/Header/Header"
 import SearchSection from "./components/SearchSection/SearchSection"
 import useFetchData from "./Hooks/useFetchData"
+import WeatherCard from "./components/WeatherCard/WeatherCard"
 
 function App() {
   const [city, setCity] = useState("")
@@ -34,6 +35,7 @@ function App() {
     url.searchParams.set("lat", lat)
     url.searchParams.set("lon", lon)
     url.searchParams.set("units", "metric")
+    url.searchParams.set("lang", "da")
     url.searchParams.set("appid", apiKey)
 
     weatherURL = url
@@ -53,6 +55,7 @@ function App() {
       <Header />
       <main>
         <SearchSection onSearch={setCity} />
+        <WeatherCard weather={weather} />
       </main>
     </>
   )

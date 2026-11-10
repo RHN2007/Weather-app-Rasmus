@@ -1,0 +1,9 @@
+
+
+.section__search h2 {
+    font-size: 2rem;
+}
+
+.section__search p {
+    color: var(--main-text-color);
+}

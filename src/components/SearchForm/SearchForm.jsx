@@ -1,6 +1,4 @@
-import { useState } from "react"
-import useFetchData from "../../Hooks/useFetchData"
-import useWeather from "../../Hooks/UseWeather"
+import './SearchForm.css'
 
 export default function SearchForm ({ onSearch }) {
 
@@ -12,20 +10,12 @@ export default function SearchForm ({ onSearch }) {
         const searchedCity = formData.get("search")
 
         onSearch(searchedCity)
-
-
-        // const searchURL = new URL(baseGeocodingURL)
-
-        // searchURL.searchParams.set("q", searchedCity)
-        // searchURL.searchParams.set("appid", apiKey)
-
-        // setGeoURL(searchURL)
     }
 
     return (
-        <form onSubmit={handleSearch}>
-            <input type="text" name="search" placeholder="Skriv en by, fx København" />
-            <input type="submit" value="Søg vejr" />
+        <form onSubmit={handleSearch} className="form__search">
+            <input className='form__city' type="text" name="search" placeholder="Skriv en by, fx København" />
+            <input className='form__submit' type="submit" value="Søg vejr" />
         </form>
     )
 }

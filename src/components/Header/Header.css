@@ -1,0 +1,32 @@
+.header {
+    height: 5rem;
+    margin-block: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__left figure {
+    margin: 0;
+}
+
+.header__left img {
+    width: 100%;
+}
+
+.header__left, .header__right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header__text h1 {
+    font-size: 1.5rem;
+}
+
+.header__text p {
+    color: var(--main-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+}
